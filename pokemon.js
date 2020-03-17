@@ -1,10 +1,6 @@
-
-d3.csv('pokemon.csv',function(d) {
-    //console.log(d); 
-    let svg = d3.select("body").append("svg")
-    .attr("width", 700)
-    .attr("height", 600);
-
+    var svg = d3.select("#svg2").append("svg")
+        .attr("width", 700)
+        .attr("height", 600);
 
     let features = ["attack","defense","hp","sp_attack","sp_defense","speed"];
     let data = [
@@ -13,10 +9,10 @@ d3.csv('pokemon.csv',function(d) {
         {attack:49,defense:49,hp:45,sp_attack:65,sp_defense:65,speed:45},
         {attack:100,defense:120,hp:75,sp_attack:25,sp_defense:65,speed:65},
     ];
-    console.log(data);
+    //console.log(data);
 
 
-    let radialScale = d3.scale.linear()
+    let radialScale = d3.scaleLinear()
         .domain([0,255])
         .range([0,250]);
     
@@ -66,7 +62,7 @@ d3.csv('pokemon.csv',function(d) {
         .text(ft_name);
     }
 
-    let line = d3.svg.line()
+    let line = d3.line()
         .x(d => d.x)
         .y(d => d.y);
     let colors = ["darkorange", "gray", "navy"];
@@ -96,5 +92,17 @@ d3.csv('pokemon.csv',function(d) {
         .attr("stroke-opacity", 1)
         .attr("opacity", 0.5);
     }
+
+d3.csv('pokemon.csv',function(d) {
+    //console.log(d); 
+    // let svg = d3.select("#svg2").append("svg")
+    // .attr("width", 700)
+    // .attr("height", 600);
+
+
+    
 });
+
+
+
 
