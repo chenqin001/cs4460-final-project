@@ -40,8 +40,15 @@ header{
   visibility: visible;
 }
 
-#label{
-  border-radius: 20px;
+.ui-slider {
+  width: 20%;
+}
+.ui-slider-handle {
+  width:2em;
+  left:-.6em;
+  text-decoration:none;
+  text-align:center;
+  
 }
 
 

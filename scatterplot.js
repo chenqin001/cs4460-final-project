@@ -109,4 +109,4 @@ svg.append('text').attr('transform','translate(790,73)').text('Normal').attr('fo
 svg.append('text').attr('transform','translate(790,93)').text('Legendary').attr('font-size',13);
 
 
-    
+
