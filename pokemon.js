@@ -1,4 +1,4 @@
-    var svg = d3.select("#svg2").append("svg")
+    var svg = d3.select("#radarChart").append("svg")
         .attr("width", 700)
         .attr("height", 600);
 
@@ -32,7 +32,7 @@
         svg.append("text")
         .attr("x", 300)
         .attr("y", 300 - radialScale(t))
-        .text(t.toString())
+        .text(t.toString()).attr('fill','white')
     );
 
     function angleToCoordinate(angle, value){
@@ -44,7 +44,7 @@
     for (var i = 0; i < features.length; i++) {
         let ft_name = features[i];
         let angle = (Math.PI / 2) + (2 * Math.PI * i / features.length);
-        let line_coordinate = angleToCoordinate(angle, 270);
+        let line_coordinate = angleToCoordinate(angle, 255);
         let label_coordinate = angleToCoordinate(angle, 280);
 
         //draw axis line
@@ -53,19 +53,20 @@
         .attr("y1", 300)
         .attr("x2", line_coordinate.x)
         .attr("y2", line_coordinate.y)
-        .attr("stroke","black");
+        .attr("stroke","white");
 
         //draw axis label
         svg.append("text")
         .attr("x", label_coordinate.x)
         .attr("y", label_coordinate.y)
-        .text(ft_name);
+        .text(ft_name)
+        .attr('fill','white');
     }
 
     let line = d3.line()
         .x(d => d.x)
         .y(d => d.y);
-    let colors = ["darkorange", "gray", "navy"];
+    let colors = ["#FF0000", "#CC0000", "#3B4CCA","#FFDE00",'#B3A125'];
 
     function getPathCoordinates(data_point){
         let coordinates = [];
@@ -90,7 +91,7 @@
         .attr("stroke", color)
         .attr("fill", color)
         .attr("stroke-opacity", 1)
-        .attr("opacity", 0.5);
+        .attr("opacity", 0.3);
     }
 
 d3.csv('pokemon.csv',function(d) {

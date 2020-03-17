@@ -6,32 +6,63 @@
     <title>CS4460 final project</title>
     <link rel="stylesheet" href="main.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    
+    <link href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" rel="stylesheet">
   
   </head>
-  <body>
+  <body class="p-3 mb-2 bg-dark text-white">
     <header>
       <img id='title' src="https://fontmeme.com/permalink/200316/0f723f487a88fa9574d3d077f7a6b656.png"></img>
     </header>
 
-    <div id="svg1">
+    <img src="https://www.spriters-resource.com/resources/sheet_icons/4/3701.png" id="oak" data-toggle="modal" data-target="#exampleModal">
+    <i class="fas fa-comment-dots fa-2x" id='bubble'></i>
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel" style="color: black;">Hi! Welcome to this Lab!</h5>
+          </div>
+          <div class="modal-body">
+            <p style="color: black;">My name is Dr.Oak and I am here to do some researches about Pokemon. Thanks for joining me.
+            </p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal" style="background-color: #CC0000;">Gotcha!</button>
+          </div>
+        </div>
+      </div>
+    </div>
 
+
+    <div id="scatterPlot" class="d-flex justify-content-center">
+      <!-- filter buttons here-->
+     
+    </div>
+    <div id="radarChart" class="d-flex justify-content-center"></div>
 
       
 
 
-    </div>
 
+        <!-- Footer -->
+    <footer class="page-footer font-small blue" style="width: 100%;border-top: 1px solid gray;">
 
-    <div id="svg2">
+      <!-- Copyright -->
+      <div class="footer-copyright text-center py-3">© 2020 Copyright: GaTech CS4460
+        <a href="https://github.com/chenqin001/cs4460-final-project"><i class="fab fa-github-alt"></i></a>
+      </div>
+      <!-- Copyright -->
 
-
-
-    </div>
-	  
-    </div>
+    </footer>
+    <!-- Footer -->
   </body>
-
+  <script>
+    $('#myModal').on('shown.bs.modal', function () {
+      $('#myInput').trigger('focus')
+    })
+  </script>
+  
   <script src="https://d3js.org/d3.v5.min.js"></script>
   <script src="./pokemon.js"></script>
   <script src="./scatterplot.js"></script>

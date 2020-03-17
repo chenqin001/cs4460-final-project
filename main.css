@@ -1,15 +1,47 @@
+*{
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
 body{
-    /* background-color: #262626; */
+    background-color: #262626;
+    color:white;   
 }
 
 header{
     text-align: center;
 
 }
-
 #title{
     width: fit-content;
-
     margin-top: 1%;
 }
+#oak{
+    position: fixed;
+    right: 50px;
+    bottom: 50px;
+}
+
+#bubble{
+  position: fixed;
+  right: 50px;
+  bottom: 150px;
+}
+
+#scatterPlot{
+    margin-left: 50px;
+    margin-top: 50px;
+}
+ 
+.pokemon:hover circle {
+  opacity: 1;
+}
+
+.pokemon:hover text {
+  visibility: visible;
+}
+
+#label{
+  border-radius: 20px;
+}
+
 
