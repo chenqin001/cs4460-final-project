@@ -3,17 +3,24 @@
 }
 
 body{
-    background-color: #262626;
     color:white;   
 }
 
 header{
     text-align: center;
-
+    margin-bottom: 10px;
 }
+
+#slider-range{
+  margin: 10px;
+  margin-left: 15px;
+}
+
+
 #title{
     width: fit-content;
     margin-top: 1%;
+    margin-bottom: 10px;
 }
 #oak{
     position: fixed;

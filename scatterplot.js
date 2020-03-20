@@ -1,15 +1,41 @@
-d3.csv('pokemon.csv').then(function(dataset) {
 
-    var pokemonG = svg.selectAll('.pokemon')
-        .data(dataset)
-        .enter()
-        .append('g')    
-        .attr('transform', function(pokemon){
-            return 'translate('+scaleYear(pokemon['base_total']) + ',' + scaleHomeruns(pokemon['capture_rate']) + ')';
-        }).attr('class','pokemon') ;
+function changeGeneration(values){
+
+    var start=values[0];
+    var end = values[1];
+    //alert(start);
+    update(start,end);
+
+}
+
+
+
+d3.csv('pokemon.csv').then(function(dataset) {
+    data=dataset;
+    update(1,7);   
+});
+
+function update(start,end){
+    //filtered dataset
+    var dataset = data.filter(function(d){
+        var generation = parseInt(d.generation);
+        return generation>=start && generation<=end;
+        
+    });
+   
+    var pokemons = svg.selectAll('.pokemon')
+    .data(dataset);
+
+    var pokemonsEnter = pokemons.enter() // Remember enter makes a placeholder for new elements
+    .append('g')
+    .attr('class', 'pokemon').attr('transform', function(pokemon){
+                 return 'translate('+scaleYear(pokemon['base_total']) + ',' + scaleHomeruns(pokemon['capture_rate']) + ')';
+             });
+
+    pokemons.merge(pokemonsEnter);
               
 
-    pokemonG.append('circle')
+    pokemonsEnter.append('circle')
         .attr('r', 4.5).style("stroke", "white")
         .style("stroke-width", 0.4)
         .style('fill',function(d){
@@ -21,7 +47,7 @@ d3.csv('pokemon.csv').then(function(dataset) {
         })
         .attr('opacity',0.5);
 
-    pokemonG.append('text')
+    pokemonsEnter.append('text')
         .attr('dy', '-0.6em')
         .text(function(pokemon){
             return pokemon['name']+" 「"+pokemon['japanese_name']+"」";
@@ -30,8 +56,12 @@ d3.csv('pokemon.csv').then(function(dataset) {
         .attr('font-size',13)
         .attr('font-weight','bold')
         .attr( 'visibility', 'hidden');
-        
-});
+
+    pokemons.exit().remove();
+
+}
+
+
 
 
 
@@ -61,7 +91,7 @@ svg.append('g').attr('class', 'x axis')
 
 svg.append('text')
     .attr('class', 'label')
-    .attr('transform','translate(360,390)')
+    .attr('transform','translate(510,390)')
     .attr('fill','white')
     .text('Base Total');
 
@@ -84,29 +114,27 @@ svg.append('text')
 
 
 svg.append('rect')
-    .attr('id','label')
-    .attr('x',755)
+    .attr('x',880) //755->
     .attr('y',50)
     .attr('width',110)
     .attr('height',60)
     .attr('fill','white');
 
 svg.append('rect')
-    .attr('x',770)
+    .attr('x',895)
     .attr('y',65)
     .attr('width',10)
     .attr('height',10)
     .attr('fill','#3D7DCA');
 
 svg.append('rect')
-    .attr('x',770)
+    .attr('x',895)
     .attr('y',85)
     .attr('width',10)
     .attr('height',10)
     .attr('fill','#FFCB05');
 
-svg.append('text').attr('transform','translate(790,73)').text('Normal').attr('font-size',13);
-svg.append('text').attr('transform','translate(790,93)').text('Legendary').attr('font-size',13);
-
+svg.append('text').attr('transform','translate(915,73)').text('Normal').attr('font-size',13);
+svg.append('text').attr('transform','translate(915,93)').text('Legendary').attr('font-size',13);
 
 
