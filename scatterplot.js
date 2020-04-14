@@ -175,7 +175,7 @@ svg1.append('text')
 svg1.append('rect')
     .attr('x',880) 
     .attr('y',50)
-    .attr('width',110)
+    .attr('width',130)
     .attr('height',60)
     .attr('fill','white');
 
@@ -184,16 +184,16 @@ svg1.append('rect')
     .attr('y',65)
     .attr('width',10)
     .attr('height',10)
-    .attr('fill','#3D7DCA');
+    .attr('fill','#FF0000');
 
 svg1.append('rect')
     .attr('x',895)
     .attr('y',85)
     .attr('width',10)
     .attr('height',10)
-    .attr('fill','#FFCB05');
+    .attr('fill','#FFDE00');
 
-svg1.append('text').attr('transform','translate(915,73)').text('Normal').attr('font-size',13);
+svg1.append('text').attr('transform','translate(915,73)').text('Not Legendary').attr('font-size',13);
 svg1.append('text').attr('transform','translate(915,93)').text('Legendary').attr('font-size',13);
 
 
