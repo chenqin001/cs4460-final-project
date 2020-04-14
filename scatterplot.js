@@ -1,140 +1,199 @@
 
-function changeGeneration(values){
+//global vars
+var gstart=1;
+var gend=7;
+var gtype="All";
+var svg1 = d3.select("#scatterPlot").append("svg").attr("width", 1200).attr("height", 500);
+var chartG = svg1.append('g');
 
+
+
+function changeGeneration(values){
     var start=values[0];
     var end = values[1];
-    //alert(start);
-    update(start,end);
-
+    gstart=start;
+    gend=end;
+    update();
 }
 
+function changeType(){
+    var e = document.getElementById("type");
+    var type = e.options[e.selectedIndex].value;
+    gtype=type;
+    update();
+}
 
-
-d3.csv('pokemon.csv').then(function(dataset) {
-    data=dataset;
-    update(1,7);   
-});
-
-function update(start,end){
-    //filtered dataset
+function update(){
+    //filtering 
+    // console.log("start: " +gstart);
+    // console.log("end: " +gend);
+    // console.log("type: " +gtype);
     var dataset = data.filter(function(d){
         var generation = parseInt(d.generation);
-        return generation>=start && generation<=end;
-        
+        var typeOne = d.type1;
+        var typeTwo=d.type2;
+        if(gtype=="All"){
+            return generation>=gstart && generation<=gend;
+        }
+        return generation>=gstart && generation<=gend && (typeOne==gtype||typeTwo==gtype);
     });
+    //console.log(dataset);
    
-    var pokemons = svg.selectAll('.pokemon')
-    .data(dataset);
+    var pokemons = chartG.selectAll('.pokemon').data(dataset); 
+    // console.log(pokemons);
+    // console.log(pokemons.enter());
+    // console.log(pokemons.exit());
 
-    var pokemonsEnter = pokemons.enter() // Remember enter makes a placeholder for new elements
-    .append('g')
-    .attr('class', 'pokemon').attr('transform', function(pokemon){
-                 return 'translate('+scaleYear(pokemon['base_total']) + ',' + scaleHomeruns(pokemon['capture_rate']) + ')';
-             });
+    var pokemonsEnter = pokemons.enter().append('g').attr('class', 'pokemon');
+    //console.log(pokemonsEnter)
+   
+    // pokemonsEnter.append('circle')
+    //     .attr('r', 4.5).style("stroke", "white")
+    //     .style("stroke-width", 0.4)
+    //     .style('fill',function(d){
+    //         if(d.is_legendary==1){
+    //             return '#FFCB05';
+    //         }else{
+    //             return '#3D7DCA';
+    //          }
+    //     })
+    //     .attr('opacity',0.5).on('click', function(d,i) {
+    //         console.log(d);
+    //         openPokemon(d);
+    //     }).attr('transform', function(pokemon){
+    //         return 'translate('+scaleY(pokemon['base_total']) + ',' + scaleX(pokemon['capture_rate']) + ')';
+    //     });
 
-    pokemons.merge(pokemonsEnter);
-              
-
-    pokemonsEnter.append('circle')
-        .attr('r', 4.5).style("stroke", "white")
-        .style("stroke-width", 0.4)
-        .style('fill',function(d){
+        pokemonsEnter.append('image')
+        .attr('height', 15)
+        .attr("href", function(d){
             if(d.is_legendary==1){
-                return '#FFCB05';
+                return 'leg_pokémon.png';
             }else{
-                return '#3D7DCA';
-             }
+                return 'pokémon.png';
+            }
         })
-        .attr('opacity',0.5);
+        .attr('opacity',0.5).on('click', function(d,i) {
+            console.log(d);
+            openPokemon(d);
+        }).attr('transform', function(pokemon){
+            return 'translate('+scaleY(pokemon['base_total']) + ',' + scaleX(pokemon['capture_rate']) + ')';
+        });
 
     pokemonsEnter.append('text')
         .attr('dy', '-0.6em')
         .text(function(pokemon){
-            return pokemon['name']+" 「"+pokemon['japanese_name']+"」";
+            //return pokemon['name']; //+" 「"+pokemon['japanese_name']+"」";
+            return pokemon['generation'];
         })
         .attr('fill','white')
         .attr('font-size',13)
-        .attr('font-weight','bold')
-        .attr( 'visibility', 'hidden');
+        .attr('font-weight','bold').attr('transform', function(pokemon){
+            return 'translate('+scaleY(pokemon['base_total']) + ',' + scaleX(pokemon['capture_rate']) + ')';
+        }).attr( 'visibility', 'hidden');
 
-    pokemons.exit().remove();
+    pokemons.exit().remove();  
+}
+
+//modal
+function openPokemon(pokemon){
+    console.log(pokemon);
+    document.getElementById("pokemonModal").style.display="inline";
+    
+    document.getElementById("poke_name").innerHTML=pokemon["name"]+" 「"+pokemon["japanese_name"]+"」";
+    document.getElementById("poke_index").innerHTML=pokemon["pokedex_number"];
+    document.getElementById("poke_generation").innerHTML=pokemon["generation"];
+    document.getElementById("poke_typeOne").innerHTML=pokemon["type1"];
+    document.getElementById("poke_typeTwo").innerHTML=pokemon["type2"].length===0?"/":pokemon["type2"];
+    document.getElementById("poke_classfication").innerHTML=pokemon["classfication"];
+
+    document.getElementById("poke_height").innerHTML=pokemon["height_m"];
+    document.getElementById("poke_weight").innerHTML=pokemon["weight_kg"];
+    document.getElementById("poke_abilities").innerHTML=pokemon["abilities"];
+
+    var source = `POKEMON/0001.png`;
+    var index = pokemon["pokedex_number"];
+    if(index.length<=1){ //1-9
+        source = `POKEMON/000${index}.png`;
+    }else if(index.length<2){
+        source = `POKEMON/00${index}.png`;
+    }else{
+        source = `POKEMON/0${index}.png`;
+    }
+    document.getElementById("poke_img").src=source;
+    
 
 }
 
 
 
+function closeModal(){ 
+    document.getElementById('pokemonModal').style.display='none';
+}
 
-
+//labels, scales, blabla
 // **** Functions to call for scaled values ****
 
-function scaleYear(year) {
-    return yearScale(year);
+function scaleY(y) {
+    return YScale(y);
 }
 
-function scaleHomeruns(homeruns) {
-    return hrScale(homeruns);
+function scaleX(x) {
+    return XScale(x);
 }
 
 // **** Code for creating scales, axes and labels ****
 
-var yearScale = d3.scaleLinear()
+var YScale = d3.scaleLinear()
     .domain([150,800]).range([60,1000]);
 
-var hrScale = d3.scaleLinear()
-    .domain([0,300]).range([340,20]);
+var XScale = d3.scaleLinear()
+    .domain([0,260]).range([330,10]);
 
-var svg = d3.select("#scatterPlot").append("svg").attr("width", 1200).attr("height", 600);
 
-svg.append('g').attr('class', 'x axis')
+
+svg1.append('g').attr('class', 'x axis')
     .attr('transform', 'translate(0,345)')
-    .call(d3.axisBottom(yearScale).tickFormat(function(d){return d;}));
+    .call(d3.axisBottom(YScale).tickFormat(function(d){return d;}));
 
-svg.append('text')
+svg1.append('text')
     .attr('class', 'label')
     .attr('transform','translate(510,390)')
     .attr('fill','white')
     .text('Base Total');
 
-svg.append('g').attr('class', 'y axis')
+svg1.append('g').attr('class', 'y axis')
     .attr('transform', 'translate(55,0)')
-    .call(d3.axisLeft(hrScale));
+    .call(d3.axisLeft(XScale));
 
-svg.append('text')
+svg1.append('text')
     .attr('class', 'label')
     .attr('transform','translate(12,200) rotate(270)')
     .attr('fill','white')
     .text('Capture Rate');
 
-svg.append('text')
-    .attr('class', 'title')
-    .attr('transform','translate(250,12)')
-    .attr('fill','white')
-    .text('Pokémon Base Total vs. Capture Rate');
-
-
-
-svg.append('rect')
-    .attr('x',880) //755->
+svg1.append('rect')
+    .attr('x',880) 
     .attr('y',50)
     .attr('width',110)
     .attr('height',60)
     .attr('fill','white');
 
-svg.append('rect')
+svg1.append('rect')
     .attr('x',895)
     .attr('y',65)
     .attr('width',10)
     .attr('height',10)
     .attr('fill','#3D7DCA');
 
-svg.append('rect')
+svg1.append('rect')
     .attr('x',895)
     .attr('y',85)
     .attr('width',10)
     .attr('height',10)
     .attr('fill','#FFCB05');
 
-svg.append('text').attr('transform','translate(915,73)').text('Normal').attr('font-size',13);
-svg.append('text').attr('transform','translate(915,93)').text('Legendary').attr('font-size',13);
+svg1.append('text').attr('transform','translate(915,73)').text('Normal').attr('font-size',13);
+svg1.append('text').attr('transform','translate(915,93)').text('Legendary').attr('font-size',13);
 
 

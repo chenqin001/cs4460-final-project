@@ -40,29 +40,83 @@
           <label for="amount">Generation range :</label>
           <input type="text" id="amount" readonly style="border:0; color:#CC0000; background-color:#343a40;font-weight:bold;width: 43px; padding-left: 6px;">
         
-          <div id="slider-range"></div>   
+          <div id="slider-range"></div> <br>
     </div>
+        
+
+          <select class="center" id="type" onchange="changeType()">
+       
+          
+            <option selected>All Types</option>
+            <option>normal</option>
+            <option>fire</option>
+            <option>fighting</option>
+            <option>water</option>
+            <option>flying</option>
+            <option>grass</option>
+            <option>poison</option>
+            <option>electric</option>
+            <option>ground</option>
+            <option>psychic</option>
+            <option>rock</option>
+            <option>ice</option>
+            <option>bug</option>
+            <option>dragon</option>
+            <option>ghost</option>
+            <option>dark</option>
+            <option>steel</option>
+            <option>fairy</option>
+          </select>
 
 
 
 
 
     <div id="scatterPlot" class="d-flex justify-content-center"></div>
-    <div id="radarChart" class="d-flex justify-content-center"></div>
-    <div>
-      <p>please enter Pokédex numbers</p>
-      1st: <input>
-      2rd:<input>
 
-    </div>
+    <!-- Pokemon modal -->
+  
+    <div id="pokemonModal">
+
+      <div>
+        <div id="poke_info">
+          <h3 id="poke_name"></h3>
+          <p>Pokedex number: <span id="poke_index"></span></p>
+          <p>Generation: <span id="poke_generation"></span></p>
+          <p>Type I: <span id="poke_typeOne"></span></p>
+          <p>Type2 II: <span id="poke_typeTwo"></span></p>
+          <p>Classfication: <span id="poke_classfication"></span></p>
+          <p>Height: <span id="poke_height"></span> m</p>
+          <p>Weight: <span id="poke_weight"></span> kg</p>
+          <p>Abilities: <span id="poke_abilities"></span></p>
+          <button onclick="closeModal()" id="close">Close</button>
+        </div>
+
+        <img id="poke_img" src="POKEMON/0001.png">
+        
+      </div>
+        
+       
+ 
+      </div>
+      
     
-    <div id='bubbleChart' class="d-flex justify-content-center"></div>
+
+    <div id="radar-input">
+      <p>Please Enter Pokédex (1 ~ 801)</p>
+      <input id="pokedex_enter">
+      <button onclick="addToChart()">Add!</button>
+      <button onclick="emptyPath()">Empty</button>
+    </div>
+    <div id="radarChart" class="d-flex justify-content-center"></div>
+    
+    <!-- <div id='bubbleChart' class="d-flex justify-content-center"></div> -->
 
 
  
 
 
-        <!-- Footer -->
+    <!-- Footer -->
     <footer class="page-footer font-small blue" style="width: 100%;border-top: 1px solid gray;">
 
       <!-- Copyright -->
@@ -78,13 +132,20 @@
   <script src="https://d3js.org/d3.v5.min.js"></script>
   <script src="./radarChart.js"></script>
   <script src="./scatterplot.js"></script>
-  <script src='./bubbleChart.js'></script>
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
   <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script>
+//turn it into a global var
+  d3.csv('pokemon.csv').then(function(pokemon_dataset) {
+      data=pokemon_dataset;  
+      console.log(data);
+      update();
+  });
+</script>
 <script>
 $(function() {
   $( "#slider-range" ).slider({
@@ -94,6 +155,7 @@ $(function() {
     values: [ 1,7 ],
     slide: function( event, ui ) {
       $( "#amount" ).val(ui.values[ 0 ] + " - " + ui.values[ 1 ] );
+      
     },
     change: function(event, ui) { 
         //alert(ui.value); 
