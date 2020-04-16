@@ -47,7 +47,7 @@
           <select class="center" id="type" onchange="changeType()">
        
           
-            <option selected>All Types</option>
+            <option selected>All</option>
             <option>normal</option>
             <option>fire</option>
             <option>fighting</option>
@@ -76,7 +76,7 @@
 
     <!-- Pokemon modal -->
   
-    <div id="pokemonModal">
+    <div id="pokemonModal" role="document">
 
       <div>
         <div id="poke_info">
@@ -84,7 +84,7 @@
           <p>Pokedex number: <span id="poke_index"></span></p>
           <p>Generation: <span id="poke_generation"></span></p>
           <p>Type I: <span id="poke_typeOne"></span></p>
-          <p>Type2 II: <span id="poke_typeTwo"></span></p>
+          <p>Type II: <span id="poke_typeTwo"></span></p>
           <p>Classfication: <span id="poke_classfication"></span></p>
           <p>Height: <span id="poke_height"></span> m</p>
           <p>Weight: <span id="poke_weight"></span> kg</p>
@@ -108,14 +108,17 @@
       <button onclick="addToChart()">Add!</button>
       <button onclick="emptyPath()">Empty</button>
     </div>
-    <div id="radarChart" class="d-flex justify-content-center"></div>
-    
-    <!-- <div id='bubbleChart' class="d-flex justify-content-center"></div> -->
 
-
- 
-
-
+    <div>
+      <div class="listedPokemon">
+        <p id="curr">No pokemon selected</p>
+        <p>Pokemons</p>
+        <div id="radar-list">
+      </div>
+        
+      </div>
+      <div id="radarChart" class="d-flex justify-content-center"></div>
+    </div>
     <!-- Footer -->
     <footer class="page-footer font-small blue" style="width: 100%;border-top: 1px solid gray;">
 
@@ -142,7 +145,7 @@
 //turn it into a global var
   d3.csv('pokemon.csv').then(function(pokemon_dataset) {
       data=pokemon_dataset;  
-      console.log(data);
+      //console.log(data);
       update();
   });
 </script>

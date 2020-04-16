@@ -1,5 +1,6 @@
     
-    var set = new Set(); 
+var set = new Set(); 
+
     
     var svg2 = d3.select("#radarChart").append("svg")
         .attr("width", 700)
@@ -63,37 +64,47 @@ function addToChart(){
    
     var curr = Number(document.getElementById("pokedex_enter").value)
     if(curr!=NaN && curr>0 && curr<=801 && !set.has(curr)){
-        console.log(data[curr-1]);
+        //console.log(data[curr-1]);
+        let color = getRandomColor();
         set.add(curr);
-        draw(data[curr-1]);
-        document.getElementById("pokedex_enter").value="";
+        draw(data[curr-1],color);
+        document.getElementById("pokedex_enter").value = "";
+        
+        var dot = document.createElement('li');
+        dot.style.color = color;
+        dot.innerHTML = data[curr - 1].name;
+        document.getElementById("radar-list").appendChild(dot);
     }
+    
 }
 
 
-function draw(pokemon){
+function draw(pokemon,color){
         let line = d3.line()
         .x(d => d.x)
         .y(d => d.y);
-        
-        let colors = ["#FF0000", "#CC0000", "#3B4CCA","#FFDE00",'#B3A125'];
 
-        console.log(svg2);
         let data ={attack:pokemon["attack"],defense:pokemon["defense"],hp:pokemon["hp"],sp_attack:pokemon["sp_attack"],sp_defense:pokemon["sp_defense"],speed:pokemon["speed"]};
     
         let d = data;
-        let coordinates = getPathCoordinates(d);
-        let color=getRandomColor();
-        svg2.append("path")
+    let coordinates = getPathCoordinates(d);
+    
+        
+        svg2.append("path").attr("class","path")
         .datum(coordinates)
         .attr("d",line)
-        .attr("stroke-width", 3)
-        .attr("stroke", color)
+        .attr("stroke-width", 2)
+        .attr("stroke", "white")
         .attr("fill", color)
-        .attr("stroke-opacity", 1)
-        .attr("opacity", 0.5)
-        .attr('class', 'hhh');
+            .on("mousemove", () => {
+                document.getElementById("curr").innerHTML = pokemon["name"];
+               
+            }).on("mouseout", () => {
+                document.getElementById("curr").innerHTML = "No pokemon selected";
+                
+        });
 }
+
 
 function getPathCoordinates(data_point){
     let coordinates = [];
@@ -102,6 +113,7 @@ function getPathCoordinates(data_point){
         let angle = (Math.PI / 2) + (2 * Math.PI * i / features.length);
         coordinates.push(angleToCoordinate(angle, data_point[ft_name]));
     }
+    coordinates.push(coordinates[0]);
     return coordinates;
 }
 
@@ -115,8 +127,8 @@ function getRandomColor() {
 }
 
 function emptyPath(){
-  
-  var r = document.getElementsByClassName("hhh");
+    document.getElementById("radar-list").innerHTML = "";
+    var r = document.getElementsByClassName("path");
   while(r.length > 0) {
     r[0].remove();
     }

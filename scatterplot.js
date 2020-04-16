@@ -25,9 +25,9 @@ function changeType(){
 
 function update(){
     //filtering 
-    // console.log("start: " +gstart);
-    // console.log("end: " +gend);
-    // console.log("type: " +gtype);
+    console.log("start: " +gstart);
+    console.log("end: " +gend);
+    console.log("type: " +gtype);
     var dataset = data.filter(function(d){
         var generation = parseInt(d.generation);
         var typeOne = d.type1;
@@ -37,35 +37,16 @@ function update(){
         }
         return generation>=gstart && generation<=gend && (typeOne==gtype||typeTwo==gtype);
     });
-    //console.log(dataset);
+    console.log(dataset);
    
-    var pokemons = chartG.selectAll('.pokemon').data(dataset); 
-    // console.log(pokemons);
-    // console.log(pokemons.enter());
-    // console.log(pokemons.exit());
+    var pokemons = chartG.selectAll('.pokemon').data(dataset, function (d) {
+        return d.name;
+    }); 
+
 
     var pokemonsEnter = pokemons.enter().append('g').attr('class', 'pokemon');
-    //console.log(pokemonsEnter)
-   
-    // pokemonsEnter.append('circle')
-    //     .attr('r', 4.5).style("stroke", "white")
-    //     .style("stroke-width", 0.4)
-    //     .style('fill',function(d){
-    //         if(d.is_legendary==1){
-    //             return '#FFCB05';
-    //         }else{
-    //             return '#3D7DCA';
-    //          }
-    //     })
-    //     .attr('opacity',0.5).on('click', function(d,i) {
-    //         console.log(d);
-    //         openPokemon(d);
-    //     }).attr('transform', function(pokemon){
-    //         return 'translate('+scaleY(pokemon['base_total']) + ',' + scaleX(pokemon['capture_rate']) + ')';
-    //     });
-
         pokemonsEnter.append('image')
-        .attr('height', 15)
+        .attr('height', 13)
         .attr("href", function(d){
             if(d.is_legendary==1){
                 return 'leg_pokémon.png';
@@ -82,16 +63,17 @@ function update(){
 
     pokemonsEnter.append('text')
         .attr('dy', '-0.6em')
-        .text(function(pokemon){
-            //return pokemon['name']; //+" 「"+pokemon['japanese_name']+"」";
-            return pokemon['generation'];
+        .text(function (pokemon) {
+            return pokemon['name']; //+" 「"+pokemon['japanese_name']+"」";
+            //return pokemon['generation'];
         })
-        .attr('fill','white')
-        .attr('font-size',13)
-        .attr('font-weight','bold').attr('transform', function(pokemon){
-            return 'translate('+scaleY(pokemon['base_total']) + ',' + scaleX(pokemon['capture_rate']) + ')';
+        .attr('fill', 'white')
+        .attr('font-size', 13)
+        .attr('font-weight', 'bold').attr('transform', function (pokemon) {
+            return 'translate(' + scaleY(pokemon['base_total']) + ',' + scaleX(pokemon['capture_rate']) + ')';
         }).attr( 'visibility', 'hidden');
 
+    pokemons.merge(pokemonsEnter);
     pokemons.exit().remove();  
 }
 
@@ -145,7 +127,7 @@ function scaleX(x) {
 // **** Code for creating scales, axes and labels ****
 
 var YScale = d3.scaleLinear()
-    .domain([150,800]).range([60,1000]);
+    .domain([150,800]).range([40,1100]);
 
 var XScale = d3.scaleLinear()
     .domain([0,260]).range([330,10]);
@@ -163,12 +145,12 @@ svg1.append('text')
     .text('Base Total');
 
 svg1.append('g').attr('class', 'y axis')
-    .attr('transform', 'translate(55,0)')
+    .attr('transform', 'translate(40,15)')
     .call(d3.axisLeft(XScale));
 
 svg1.append('text')
     .attr('class', 'label')
-    .attr('transform','translate(12,200) rotate(270)')
+    .attr('transform','translate(11,200) rotate(270)')
     .attr('fill','white')
     .text('Capture Rate');
 
