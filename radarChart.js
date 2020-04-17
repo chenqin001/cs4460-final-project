@@ -63,17 +63,20 @@ function addToChart(){
 
    
     var curr = Number(document.getElementById("pokedex_enter").value)
-    if(curr!=NaN && curr>0 && curr<=801 && !set.has(curr)){
+    if (curr != NaN && curr > 0 && curr <= 801 && !set.has(curr)) {
         //console.log(data[curr-1]);
+        document.getElementById("warning").style.display = "none";
         let color = getRandomColor();
         set.add(curr);
-        draw(data[curr-1],color);
+        draw(data[curr - 1], color);
         document.getElementById("pokedex_enter").value = "";
         
         var dot = document.createElement('li');
         dot.style.color = color;
         dot.innerHTML = data[curr - 1].name;
         document.getElementById("radar-list").appendChild(dot);
+    } else {
+        document.getElementById("warning").style.display = "block";
     }
     
 }
@@ -100,7 +103,7 @@ function draw(pokemon,color){
                 document.getElementById("curr").innerHTML = pokemon["name"];
                
             }).on("mouseout", () => {
-                document.getElementById("curr").innerHTML = "No pokemon selected";
+                document.getElementById("curr").innerHTML = "No pokemon selected :)";
                 
         });
 }

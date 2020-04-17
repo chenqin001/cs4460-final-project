@@ -47,7 +47,7 @@
           <select class="center" id="type" onchange="changeType()">
        
           
-            <option selected>All</option>
+            <option selected>All Types</option>
             <option>normal</option>
             <option>fire</option>
             <option>fighting</option>
@@ -89,30 +89,33 @@
           <p>Height: <span id="poke_height"></span> m</p>
           <p>Weight: <span id="poke_weight"></span> kg</p>
           <p>Abilities: <span id="poke_abilities"></span></p>
-          <button onclick="closeModal()" id="close">Close</button>
+          <button onclick="closeModal()" id="close" class="btn btn-light">Close</button>
         </div>
 
         <img id="poke_img" src="POKEMON/0001.png">
         
-      </div>
+        </div>
         
        
  
       </div>
       
-    
+    <hr style="color:white">
 
     <div id="radar-input">
       <p>Please Enter Pokédex (1 ~ 801)</p>
       <input id="pokedex_enter">
-      <button onclick="addToChart()">Add!</button>
-      <button onclick="emptyPath()">Empty</button>
+      <p style="color:red;display: none" id="warning">Not a valid input!</p>
+      <p>
+      <button onclick="addToChart()" type="button" class="btn btn-warning">Add</button>
+      <button onclick="emptyPath()" type="button" class="btn btn-warning">Clear</button></p>
     </div>
 
     <div>
       <div class="listedPokemon">
-        <p id="curr">No pokemon selected</p>
-        <p>Pokemons</p>
+        <h4 id="curr">No pokemon selected :)</h4>
+        <hr>
+        <h3>Pokemons added:</h3>
         <div id="radar-list">
       </div>
         

@@ -64,13 +64,13 @@ header{
 /* The pokemon Modal  */
 
 #pokemonModal{
-  background-color: #404040;
+  background-color: #6b778d;
   position: fixed;
   top:20%;
   left:20%;
   right:20%;
   height: 500px;
-  border: solid 8px #7fff00;
+  border: solid 8px #ffffff;
   border-radius: 20px;
   z-index: 100;
   display: none;
@@ -111,10 +111,19 @@ header{
 .listedPokemon{
   width:45%;
   float: left;
-  background-color: #404040;
+  background-color: #6b778d;
   border-radius: 25px;
   padding: 30px;
   margin: 30px;
-  height: 500px;
+  height: 540px;
   overflow: scroll;
+}
+
+#curr{
+  color: #ffc045;
+}
+
+#pokedex_enter{
+  margin-bottom: 15px;
+
 }

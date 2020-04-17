@@ -2,8 +2,8 @@
 //global vars
 var gstart=1;
 var gend=7;
-var gtype="All";
-var svg1 = d3.select("#scatterPlot").append("svg").attr("width", 1200).attr("height", 500);
+var gtype="All Types";
+var svg1 = d3.select("#scatterPlot").append("svg").attr("width", 1200).attr("height", 400);
 var chartG = svg1.append('g');
 
 
@@ -32,7 +32,7 @@ function update(){
         var generation = parseInt(d.generation);
         var typeOne = d.type1;
         var typeTwo=d.type2;
-        if(gtype=="All"){
+        if(gtype=="All Types"){
             return generation>=gstart && generation<=gend;
         }
         return generation>=gstart && generation<=gend && (typeOne==gtype||typeTwo==gtype);
