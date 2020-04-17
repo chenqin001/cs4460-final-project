@@ -1,20 +1,49 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>CS4460 final project</title>
-    <link rel="stylesheet" href="main.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" rel="stylesheet">
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>CS4460 final project</title>
+        <link rel="stylesheet" href="main.css">
+        <link href="https://fonts.googleapis.com/css?family=Caveat|IM+Fell+French+Canon+SC|Indie+Flower|VT323|Vollkorn&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <link href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" rel="stylesheet">
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+      </head>
+    
+      <body class="pokemon-content" style="background-color:white;">
+        <header >
+            <img id='ash-pokeball' src="https://archive-media-1.nyafuu.org/vp/image/1517/67/1517674134586.gif"></img>
+            <img id='pokemon-logo' src="https://upload.wikimedia.org/wikipedia/commons/9/98/International_Pok%C3%A9mon_logo.svg"></img>
+        </header>
+    
+        <div class="Body">
+            <section class="Introduction">
+              <h2  id = title1 class = "title">HOW MUCH<br>Do you <b>KNOW</b>about<br><b>POKÉMON?</b></br></br></h2>
+              <div class="row" id = row1>
+                  <div class="column1">
+                      <img id = image1 src="red_blue.JPG" alt="Pocket Monsters Red and Green" width = 50%
+                      height = 100%>
+                  </div>
+                  <div class="column2">
+                    <p id = para1 class = "paragraph"; style="text-align:justify; width : 70%; display:table;">It appears in 1996 in <a href="https://en.wikipedia.org/wiki/Pok%C3%A9mon_Red_and_Blue" target="_blank" style="color:rgb(169,169,169); font-family: 'VT323', monospace;" >Pokémon Red and Blue</a>, designed by Game Freak and published by Nintendo for the Game Boy. In the following years, comics, animated series and films were released and Pokémon started to play an important role those who are addicted to these amazing monsters.</p>
+                </div>
+              </div>
+              <div class="row" id = row2>
+                  <div class="column1">
+                      <p id = para2 class = "paragraph"; style="text-align:justify; width : 70%; display:table;">The releasing of <a href="https://en.wikipedia.org/wiki/Pok%C3%A9mon_Go" target="_blank" style="color:rgb(169,169,169);font-family: 'VT323', monospace;" >Pokémon Go</a> in 2016, an augmented reality mobile game, is a huge success: players immersing themselves into both the real world and the Pokémon world. Same for <a href="https://en.wikipedia.org/wiki/Pok%C3%A9mon_Sword_and_Shields" target="_blank" style="color:rgb(169,169,169);font-family: 'VT323', monospace;" >Pokémon Sword and Shield</a>, these 2019 role-playing video games had sold more than sixteen million copies worldwide, becoming the fastest-selling games on Switch.</p>
+                  </div>
+                  <div class="column2">
+                      <img id = image2 src="pokemon_Go.JPG" alt="Pocket Monsters Red and Green" width = 50%
+                      height = 60%>   
+                  </div>
+    
+              </div>
+              <h2  id = title2 class = "title"> <br>How many Generations? </br><br>Legendary or Normal? </br><br>Start to Explore!</br></h2>
 
-  </head>
-  <body class="p-3 mb-2 bg-dark text-white">
-    <header>
-      <img id='title' src="https://fontmeme.com/permalink/200316/0f723f487a88fa9574d3d077f7a6b656.png"></img>
-    </header>
+            </section>  
 
+    <!-- Generations: Section 1 -->
     <img src="https://www.spriters-resource.com/resources/sheet_icons/4/3701.png" id="oak" data-toggle="modal" data-target="#exampleModal">
     <i class="fas fa-comment-dots fa-2x" id='bubble'></i>
     <!-- Modal -->
@@ -25,7 +54,7 @@
             <h5 class="modal-title" id="exampleModalLabel" style="color: black;">Hi! Welcome to this Lab!</h5>
           </div>
           <div class="modal-body">
-            <p style="color: black;">My name is Dr.Oak and I am here to do some researches about Pokemon. Thanks for joining me.
+            <p style="color: black;">My name is Dr.Oak and I am here to do some researches about Pokémon. Thanks for joining me.
             </p>
           </div>
           <div class="modal-footer">
@@ -37,8 +66,8 @@
 
     <div class=" d-flex justify-content-center">
         
-          <label for="amount">Generation range :</label>
-          <input type="text" id="amount" readonly style="border:0; color:#CC0000; background-color:#343a40;font-weight:bold;width: 43px; padding-left: 6px;">
+          <label for="amount" ><p id = "number_text" style="color:rgb(169,169,169);font-family: 'VT323', monospace; font-size: 25px; text-shadow: 2px 2px #ffff5050;" >Generation Range :&nbsp;&nbsp;</p></label>
+          <input type="text"  id="amount" style="border:0; color:rgb(169,169,169);font-family: 'VT323', monospace; font-size: 25px; text-shadow: 2px 2px #ffff5050;">
         
           <div id="slider-range"></div> <br>
     </div>
@@ -68,10 +97,6 @@
             <option>fairy</option>
           </select>
 
-
-
-
-
     <div id="scatterPlot" class="d-flex justify-content-center"></div>
 
     <!-- Pokemon modal -->
@@ -91,31 +116,48 @@
           <p>Abilities: <span id="poke_abilities"></span></p>
           <button onclick="closeModal()" id="close" class="btn btn-light">Close</button>
         </div>
-
-        <img id="poke_img" src="POKEMON/0001.png">
-        
+        <img id="poke_img" src="POKEMON/0001.png">       
         </div>
-        
-       
- 
       </div>
-      
-    <hr style="color:white">
 
+      <!-- Types: Section 2 -->
+      <h2  id = title3 class = "title"> <br>POKÉMON Types Matters! </br></h2>
+      <h2  id = title3_2 class = "title"><br><a href="https://pokemon.fandom.com/wiki/Types" target="_blank" style="color:black" >Different Types = Different Abilities</a></br><br></br></h2>
+      
+      <div class="row_2" id = row1_2>
+          <div class="column_3">
+              <img id = image3 src="water.gif" alt="Water Type" width = 80%
+              height = 80%>  
+          </div>
+          <div class="column_3">
+              <img id = image4 src="fire.gif" alt="Fire Type" width = 80%
+              height = 80%>                
+          </div>
+          <div class="column_3">
+              <img id = image5 src="grass.gif" alt="Grass Type" width = 80%
+              height = 80%>  
+          </div>
+      </div>      
+
+    <!-- Filters: Section 3-->
+    <h2  id = title5 class = "title"> Find Your <br>Favorite POKÉMON!</br></h2>
+
+    <!-- Radar Chart: Section 4-->
+    <h2  id = title4 class = "title"> <br>Who Will Win?</br><br>Try by Yourself!</br></h2>
     <div id="radar-input">
-      <p>Please Enter Pokédex (1 ~ 801)</p>
+      <p id = "input_instruction">Please Enter Pokédex (1 ~ 801) Select Up to 5 Pokémon!</p>
       <input id="pokedex_enter">
-      <p style="color:red;display: none" id="warning">Not a valid input!</p>
-      <p>
-      <button onclick="addToChart()" type="button" class="btn btn-warning">Add</button>
-      <button onclick="emptyPath()" type="button" class="btn btn-warning">Clear</button></p>
+      <p id = "buttons">
+        <button onclick="addToChart()" type="button" class="btn btn-warning">Add</button>
+        <button onclick="emptyPath()" type="button" class="btn btn-warning">Clear</button></p>
+      <p style="color:red; font-family: 'VT323', monospace; display: none" id="warning">Not a valid input!</p>  
     </div>
 
     <div>
       <div class="listedPokemon">
-        <h4 id="curr">No pokemon selected :)</h4>
+        <h4 id="curr">Pokémon Added:</h4>
         <hr>
-        <h3>Pokemons added:</h3>
+        <!-- <h3>Pokémon Added:</h3> -->
         <div id="radar-list">
       </div>
         
@@ -123,7 +165,7 @@
       <div id="radarChart" class="d-flex justify-content-center"></div>
     </div>
     <!-- Footer -->
-    <footer class="page-footer font-small blue" style="width: 100%;border-top: 1px solid gray;">
+    <footer class="page-footer font-small blue" style="width: 100%; border-top: 1px solid gray;">
 
       <!-- Copyright -->
       <div class="footer-copyright text-center py-3">© 2020 Copyright: GaTech CS4460
@@ -133,6 +175,9 @@
 
     </footer>
     <!-- Footer -->
+
+
+
   </body>
 
   <script src="https://d3js.org/d3.v5.min.js"></script>
@@ -174,6 +219,12 @@ $(function() {
     " - " + $( "#slider-range" ).slider( "values", 1 ) );
 
 } );
+
+//The pokemon logo PokeBall disappearing effect
+$(function() {
+  $("#pokemon-logo").delay(2500).fadeIn();
+});
+
 </script>
 
 </html>

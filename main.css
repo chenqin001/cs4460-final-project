@@ -1,6 +1,6 @@
-*{
+/* *{
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-}
+} */
 
 body{
     color:white;   
@@ -13,8 +13,152 @@ header{
 }
 
 #slider-range{
-  margin: 10px;
-  margin-left: 15px;
+  margin: 35px;
+  margin-left: -50px;
+}
+
+#ash-pokeball{
+  width: 70%;
+  height: 70%;
+  margin-top: 9%;
+  margin-bottom: 10px;
+  z-index: 1;
+}
+
+#pokemon-logo{
+  width: 40%;
+  height: 40%;
+  margin-top: -40%;
+  display: none;
+  z-index: 2;
+}
+
+#title1 {
+  margin-top: 13%;
+  margin-left: 10%;
+  font-size: 100px;
+  line-height: 90px;
+  color:	rgb(0,0,0);
+  font-family: 'IM Fell French Canon SC', serif;
+  text-shadow: 2px 2px #ffff5050;
+}
+
+#para1 {
+  margin-top: 14%;
+  margin-left: 0%;
+  left:40px;
+  font-size: 34px;
+  line-height: 37px;
+  font-family: 'VT323', monospace;
+  color: rgb(169,169,169);
+  text-shadow: 1px 1px #ffff5050;
+}
+
+#image1 {
+  margin-top: 3%;
+  margin-left: 35%
+}
+
+#image2 {
+  margin-top: 18%;
+  margin-left: 16%
+}
+
+#para2 {
+  margin-top: 14%;
+  margin-left: 30%;
+  left:40px;
+  font-size: 34px;
+  line-height: 37px;
+  font-family: 'VT323', monospace;
+  color: rgb(169,169,169);
+  text-shadow: 1px 1px #ffff5050;
+}
+
+.column1 {
+  float: left;
+  width: 50%;
+}
+
+.column2 {
+  float: right;
+  width: 50%;
+}
+
+#title2 {
+  margin-top: 5%;
+  margin-left: 7%;
+  font-size: 80px;
+  line-height: 40px;
+  color:	rgb(0,0,0);
+  font-family: 'IM Fell French Canon SC', serif;
+  text-shadow: 2px 2px #ffff5050;
+}
+
+#title3 {
+  margin-top: 5%;
+  margin-left: 20%;
+  font-size: 80px;
+  line-height: 40px;
+  color:	rgb(0,0,0);
+  font-family: 'IM Fell French Canon SC', serif;
+  text-shadow: 2px 2px #ffff5050;
+}
+
+#title3_2 {
+  margin-top: 0%;
+  margin-left: 50%;
+  font-size: 35px;
+  line-height: 40px;
+  color:	rgb(0,0,0);
+  font-family: 'IM Fell French Canon SC', serif;
+  text-shadow: 2px 2px #ffff5050;
+}
+
+#image3 {
+  margin-top: 0%;
+  margin-left: 18%;
+}
+
+#image4 {
+  margin-top: 0%;
+  margin-left: 12%;
+}
+
+#image5 {
+  margin-top: 0%;
+  margin-left: 5%;
+}
+
+#title4 {
+  margin-top: 5%;
+  margin-left: 10%;
+  font-size: 80px;
+  line-height: 40px;
+  color:	rgb(0,0,0);
+  font-family: 'IM Fell French Canon SC', serif;
+  text-shadow: 2px 2px #ffff5050;
+}
+#title5 {
+  margin-top: 5%;
+  margin-left: 33%;
+  font-size: 80px;
+  line-height: 80px;
+  color:	rgb(0,0,0);
+  font-family: 'IM Fell French Canon SC', serif;
+  text-shadow: 2px 2px #ffff5050;
+}
+
+.column_3 {
+  float: left;
+  width: 33.33%;
+}
+
+/* Clear floats after the columns */
+.row_2:after {
+  content: "";
+  display: table;
+  clear: both;
 }
 
 
@@ -95,10 +239,10 @@ header{
   align-content: center;
 }
 .center{
-  margin-left: 40%;
+  margin-left: 37%;
   width: 20%;
   margin-right: 40%;
-  margin-top: 20px;
+  margin-top: 0px;
 }
 .path{
   opacity: 0.3;
@@ -121,9 +265,48 @@ header{
 
 #curr{
   color: #ffc045;
+  font-size: 45px;
+  font-family: 'VT323', monospace;
+  text-shadow: 1px 1px #ffff5050;
+}
+
+#input_instruction{
+  width:300%;
+  margin-left : -90%;
+  margin-top :15%;
+  font-size: 34px;
+  line-height: 37px;
+  font-family: 'VT323', monospace;
+  color: rgb(169,169,169);
+  text-shadow: 1px 1px #ffff5050;
 }
 
 #pokedex_enter{
+  margin-left : -23%;
   margin-bottom: 15px;
+
+}
+
+#number_text {
+  margin-top: 12%;
+}
+
+#buttons {
+  margin-top: -20%;
+  margin-left : 50%;
+}
+
+#warning {
+  margin-left : -11%;
+}
+
+#radar-list {
+  margin-top: 4%;
+  margin-left: 15%;
+  font-size: 40px;
+  line-height: 60px;
+  font-family: 'VT323', monospace;
+  color: rgb(169,169,169);
+  text-shadow: 1px 1px #ffff5050;
 
 }

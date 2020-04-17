@@ -1,4 +1,3 @@
-    
 var set = new Set(); 
 
     
@@ -27,7 +26,7 @@ var set = new Set();
         svg2.append("text")
         .attr("x", 300)
         .attr("y", 300 - radialScale(t))
-        .text(t.toString()).attr('fill','white')
+        .text(t.toString()).attr('fill','black')
     );
 
     function angleToCoordinate(angle, value){
@@ -48,14 +47,14 @@ var set = new Set();
         .attr("y1", 300)
         .attr("x2", line_coordinate.x)
         .attr("y2", line_coordinate.y)
-        .attr("stroke","white");
+        .attr("stroke","black");
 
         //draw axis label
         svg2.append("text")
         .attr("x", label_coordinate.x)
         .attr("y", label_coordinate.y)
         .text(ft_name)
-        .attr('fill','white');
+        .attr('fill','black');
     }
    
 
@@ -97,7 +96,7 @@ function draw(pokemon,color){
         .datum(coordinates)
         .attr("d",line)
         .attr("stroke-width", 2)
-        .attr("stroke", "white")
+        .attr("stroke", "black")
         .attr("fill", color)
             .on("mousemove", () => {
                 document.getElementById("curr").innerHTML = pokemon["name"];
