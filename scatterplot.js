@@ -64,11 +64,11 @@ function update(){
     pokemonsEnter.append('text')
         .attr('dy', '-0.6em')
         .text(function (pokemon) {
-            return pokemon['name']; //+" 「"+pokemon['japanese_name']+"」";
+            return pokemon['name']+" 「"+pokemon['japanese_name']+"」";
             //return pokemon['generation'];
         })
-        .attr('fill', 'white')
-        .attr('font-size', 13)
+        .attr('fill', 'black')
+        .attr('font-size', 11)
         .attr('font-weight', 'bold').attr('transform', function (pokemon) {
             return 'translate(' + scaleY(pokemon['base_total']) + ',' + scaleX(pokemon['capture_rate']) + ')';
         }).attr( 'visibility', 'hidden');
@@ -141,7 +141,7 @@ svg1.append('g').attr('class', 'x axis')
 svg1.append('text')
     .attr('class', 'label')
     .attr('transform','translate(510,390)')
-    .attr('fill','white')
+    .attr('fill','black')
     .text('Base Total');
 
 svg1.append('g').attr('class', 'y axis')
@@ -151,7 +151,7 @@ svg1.append('g').attr('class', 'y axis')
 svg1.append('text')
     .attr('class', 'label')
     .attr('transform','translate(11,200) rotate(270)')
-    .attr('fill','white')
+    .attr('fill','black')
     .text('Capture Rate');
 
 svg1.append('rect')
@@ -166,14 +166,14 @@ svg1.append('rect')
     .attr('y',65)
     .attr('width',10)
     .attr('height',10)
-    .attr('fill','#FF0000');
+    .attr('fill','#CC0000');
 
 svg1.append('rect')
     .attr('x',895)
     .attr('y',85)
     .attr('width',10)
     .attr('height',10)
-    .attr('fill','#FFDE00');
+    .attr('fill','#3B4CCA');
 
 svg1.append('text').attr('transform','translate(915,73)').text('Not Legendary').attr('font-size',13);
 svg1.append('text').attr('transform','translate(915,93)').text('Legendary').attr('font-size',13);

@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <title>CS4460 final project</title>
+        <title>Pokemonology</title>
         <link rel="stylesheet" href="main.css">
         <link href="https://fonts.googleapis.com/css?family=Caveat|IM+Fell+French+Canon+SC|Indie+Flower|VT323|Vollkorn&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
@@ -39,7 +39,7 @@
                   </div>
     
               </div>
-              <h2  id = title2 class = "title"> <br>How many Generations? </br><br>Legendary or Normal? </br><br>Start to Explore!</br></h2>
+              <h2  id = title2 class = "title"> <br>The Pokemon Encyclopedia! </br><br>Ability VS Capture Rate</br><br>Click to Explore!</br></h2>
 
             </section>  
 
@@ -51,14 +51,20 @@
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel" style="color: black;">Hi! Welcome to this Lab!</h5>
+            <h5 class="modal-title" id="exampleModalLabel" style="color: black;">CS4460 final project--Oh My Pokemon!</h5>
           </div>
           <div class="modal-body">
-            <p style="color: black;">My name is Dr.Oak and I am here to do some researches about Pokémon. Thanks for joining me.
+            <p style="color: black;">Developed by 
+              <ul>
+                <li>Xingyun Chang</li>
+                <li>Qin Chen</li>
+                <li>Tiantong Li</li><li>Nasir Panjwani</li>
+                </ul>
+            
             </p>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal" style="background-color: #CC0000;">Gotcha!</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal" style="background-color: #CC0000;">Close</button>
           </div>
         </div>
       </div>
@@ -114,7 +120,7 @@
           <p>Height: <span id="poke_height"></span> m</p>
           <p>Weight: <span id="poke_weight"></span> kg</p>
           <p>Abilities: <span id="poke_abilities"></span></p>
-          <button onclick="closeModal()" id="close" class="btn btn-light">Close</button>
+          <button onclick="closeModal()" id="close" class="btn btn-red" style="background-color: #CC0000;color:white">Close</button>
         </div>
         <img id="poke_img" src="POKEMON/0001.png">       
         </div>
@@ -143,9 +149,9 @@
     <h2  id = title5 class = "title"> Find Your <br>Favorite POKÉMON!</br></h2>
 
     <!-- Radar Chart: Section 4-->
-    <h2  id = title4 class = "title"> <br>Who Will Win?</br><br>Try by Yourself!</br></h2>
+    <h2  id = title4 class = "title"> <br>Battle Time!Who's the Winner?</br><br>Try it Yourself!</br></h2>
     <div id="radar-input">
-      <p id = "input_instruction">Please Enter Pokédex (1 ~ 801) Select Up to 5 Pokémon!</p>
+      <p id = "input_instruction">Please Enter Pokédex (1 ~ 801)</p>
       <input id="pokedex_enter">
       <p id = "buttons">
         <button onclick="addToChart()" type="button" class="btn btn-warning">Add</button>
@@ -164,18 +170,16 @@
       </div>
       <div id="radarChart" class="d-flex justify-content-center"></div>
     </div>
-    <!-- Footer -->
-    <footer class="page-footer font-small blue" style="width: 100%; border-top: 1px solid gray;">
 
+    <footer class="page-footer font-small blue" style="width: 100%; border-top: 1px solid gray;">
+    
       <!-- Copyright -->
       <div class="footer-copyright text-center py-3">© 2020 Copyright: GaTech CS4460
         <a href="https://github.com/chenqin001/cs4460-final-project"><i class="fab fa-github-alt"></i></a>
       </div>
       <!-- Copyright -->
-
+    
     </footer>
-    <!-- Footer -->
-
 
 
   </body>

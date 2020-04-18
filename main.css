@@ -208,13 +208,13 @@ header{
 /* The pokemon Modal  */
 
 #pokemonModal{
-  background-color: #6b778d;
+  background-color: #ffffff;
   position: fixed;
   top:20%;
   left:20%;
   right:20%;
   height: 500px;
-  border: solid 8px #ffffff;
+  border: solid 8px #6b778d;
   border-radius: 20px;
   z-index: 100;
   display: none;
@@ -272,7 +272,7 @@ header{
 
 #input_instruction{
   width:300%;
-  margin-left : -90%;
+  margin-left : -30%;
   margin-top :15%;
   font-size: 34px;
   line-height: 37px;
