@@ -49,9 +49,9 @@ function update(){
         .attr('height', 13)
         .attr("href", function(d){
             if(d.is_legendary==1){
-                return 'leg_pokémon.png';
+                return 'leg_pokemon.png';
             }else{
-                return 'pokémon.png';
+                return 'pokemon.png';
             }
         })
         .attr('opacity',0.5).on('click', function(d,i) {
