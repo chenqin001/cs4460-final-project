@@ -10,5 +10,5 @@ There are four visualizations in our final project, and the original code/ file 
 
 Datasets Used in Visualizations:
 
-1.pokemon.csv
-2.POKEMON(directory)
+1. pokemon.csv
+2. POKEMON(directory)
